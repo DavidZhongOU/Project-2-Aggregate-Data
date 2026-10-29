@@ -11,7 +11,7 @@ public class TripPoint {
     private double lat;
     private double lon;
     private int time;
-    private ArrayList<TripPoint> trip;
+    private static ArrayList<TripPoint> trip;
 
 
     /**
@@ -59,7 +59,7 @@ public class TripPoint {
      * 
      * @return
      */
-    public ArrayList<TripPoint> getTrip() {
+    public static ArrayList<TripPoint> getTrip() {
         return new ArrayList<>(trip);
     }
 
