@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 
 /**
- * 
+ * The class TripPoint finds the total distance traveled during
+ * the trip or the average speed from the triplog.csv file.
+ *  
  * TripPoint
  */
 public class TripPoint {
@@ -51,7 +53,6 @@ public class TripPoint {
     public double getLon() {
         return lon;
     }
-
 
     /**
      * Returns the trip
