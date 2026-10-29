@@ -63,4 +63,22 @@ public class TripPoint {
         return new ArrayList<>(trip);
     }
 
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return
+     */
+    public static double haversineDistance(TripPoint a, TripPoint b) {
+
+    }
+
+
+    /**
+     * 
+     * @param filename
+     */
+    public static void readFile(String filename) {
+
+    }
 }
