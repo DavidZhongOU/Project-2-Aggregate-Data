@@ -25,20 +25,41 @@ public class TripPoint {
         this.lon = lon;
     }
 
+    /**
+     * Returns the time
+     * 
+     * @return
+     */
     public int getTime() {
-
+        return time;
     }
 
+    /**
+     * Returns the lat
+     * 
+     * @return
+     */
     public double getLat() {
-
+        return lat;
     }
 
+    /**
+     * Returns the lon
+     * 
+     * @return
+     */
     public double getLon() {
-
+        return lon;
     }
 
+
+    /**
+     * Returns the trip
+     * 
+     * @return
+     */
     public ArrayList<TripPoint> getTrip() {
-        
+        return trip;
     }
 
 }
