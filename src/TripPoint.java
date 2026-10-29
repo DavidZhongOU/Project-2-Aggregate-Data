@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 
 /**
@@ -55,12 +55,12 @@ public class TripPoint {
     }
 
     /**
-     * Returns the trip
+     * Returns a copy of trip ArrayList
      * 
      * @return
      */
     public ArrayList<TripPoint> getTrip() {
-        return trip;
+        return new ArrayList<>(trip);
     }
 
 }
