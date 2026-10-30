@@ -41,7 +41,7 @@ public class TripPoint {
     }
 
     /**
-     * Returns the lat
+     * Returns the latitude
      * 
      * @return
      */
@@ -50,7 +50,7 @@ public class TripPoint {
     }
 
     /**
-     * Returns the lon
+     * Returns the longitude
      * 
      * @return
      */
@@ -68,6 +68,8 @@ public class TripPoint {
     }
 
     /**
+     * Calculates the distance from point a to point b using the Haversine Formula
+     * https://en.wikipedia.org/wiki/Haversine_formula
      * 
      * @param a
      * @param b
@@ -90,6 +92,11 @@ public class TripPoint {
         return EARTH_RADIUS_KM * centralAngleC;
     }
 
+    /**
+     * Returns the total time of the trip in hours
+     * 
+     * @return
+     */
     public static double totalTime() {
         int totalMin = trip.get(trip.size()-1).getTime();
 
@@ -98,12 +105,14 @@ public class TripPoint {
 
 
     /**
+     * Reads the entire triplog.csv file and initialized each line of data as
+     * a TripPoint object and adds the object to the trip ArrayList
      * 
      * @param filename
      */
     public static void readFile(String filename) {
         trip = new ArrayList<TripPoint>();
-        
+
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             while (reader.ready()) {
                 String currentLine = reader.readLine();
