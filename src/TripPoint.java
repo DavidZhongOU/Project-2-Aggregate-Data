@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.*;
 
 
@@ -70,7 +72,7 @@ public class TripPoint {
      * @return
      */
     public static double haversineDistance(TripPoint a, TripPoint b) {
-
+        
     }
 
 
@@ -79,6 +81,16 @@ public class TripPoint {
      * @param filename
      */
     public static void readFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            while (reader.ready()) {
+                String currentLine = reader.readLine();
+                if (currentLine.matches("[^0-9.,-]")) { continue; }
 
+                String lineSplit[] = currentLine.split(",");
+                trip.add(new TripPoint(Integer.parseInt(lineSplit[0]), Double.parseDouble(lineSplit[1]), Double.parseDouble(lineSplit[2])));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
