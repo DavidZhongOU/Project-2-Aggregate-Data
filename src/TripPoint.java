@@ -15,6 +15,8 @@ public class TripPoint {
     private int time;
     private static ArrayList<TripPoint> trip;
 
+    private static final int EARTH_RADIUS_KM = 6371;
+
 
     /**
      * The constructor tnitializes the class fields time, lat, and lon.
@@ -72,7 +74,20 @@ public class TripPoint {
      * @return
      */
     public static double haversineDistance(TripPoint a, TripPoint b) {
+        double radALat = Math.toRadians(a.getLat());
+        double radALon = Math.toRadians(a.getLon());
+
+        double radBLat = Math.toRadians(b.getLat());
+        double radBLon = Math.toRadians(b.getLon());
         
+        double deltaLat = radBLat - radALat;
+        double deltaLon = radBLon - radALon;
+
+        double haversineValue = Math.pow(Math.sin(deltaLat/2), 2) + Math.cos(radALat) * Math.cos(radBLat) * Math.pow(Math.sin(deltaLon/2), 2);
+
+        double centralAngleC = 2 * Math.atan2(Math.sqrt(haversineValue), Math.sqrt(1 - haversineValue));
+
+        return EARTH_RADIUS_KM * centralAngleC;
     }
 
 
