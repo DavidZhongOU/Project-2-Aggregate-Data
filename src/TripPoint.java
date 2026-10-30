@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.*;
+import java.util.ArrayList;
 
 
 /**
@@ -93,6 +93,18 @@ public class TripPoint {
     }
 
     /**
+     * Returns the average speed between two points in km/hr
+     * 
+     * @return
+     */
+    public static double avgSpeed(TripPoint a, TripPoint b) {
+        double distanceAB = haversineDistance(a, b);
+        double hoursAB = Math.abs(a.getTime() - b.getTime()) / 60.0;
+
+        return distanceAB / hoursAB;
+    }
+
+    /**
      * Returns the total time of the trip in hours
      * 
      * @return
@@ -117,7 +129,6 @@ public class TripPoint {
 
         return totalKm;
     }
-
 
     /**
      * Reads the entire triplog.csv file and initialized each line of data as
