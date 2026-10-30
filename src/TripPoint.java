@@ -90,16 +90,24 @@ public class TripPoint {
         return EARTH_RADIUS_KM * centralAngleC;
     }
 
+    public static double totalTime() {
+        int totalMin = trip.get(trip.size()-1).getTime();
+
+        return totalMin / 60.0;
+    }
+
 
     /**
      * 
      * @param filename
      */
     public static void readFile(String filename) {
+        trip = new ArrayList<TripPoint>();
+        
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             while (reader.ready()) {
                 String currentLine = reader.readLine();
-                if (currentLine.matches("[^0-9.,-]")) { continue; }
+                if (!currentLine.matches("[0-9,.-]+")) { continue; }
 
                 String lineSplit[] = currentLine.split(",");
                 trip.add(new TripPoint(Integer.parseInt(lineSplit[0]), Double.parseDouble(lineSplit[1]), Double.parseDouble(lineSplit[2])));
