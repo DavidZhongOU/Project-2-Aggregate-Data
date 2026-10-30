@@ -68,7 +68,7 @@ public class TripPoint {
     }
 
     /**
-     * Calculates the distance from point a to point b using the Haversine Formula
+     * Calculates the distance(km) from point a to point b using the Haversine Formula
      * https://en.wikipedia.org/wiki/Haversine_formula
      * 
      * @param a
@@ -101,6 +101,21 @@ public class TripPoint {
         int totalMin = trip.get(trip.size()-1).getTime();
 
         return totalMin / 60.0;
+    }
+
+    /**
+     * Computes the total distance between each point of the trip in kilometers
+     * 
+     * @return
+     */
+    public static double totalDistance() {
+        double totalKm = 0.0;
+
+        for (int i = 0; i < trip.size()-1; i++) {
+            totalKm += haversineDistance(trip.get(i), trip.get(i+1));
+        }
+
+        return totalKm;
     }
 
 
